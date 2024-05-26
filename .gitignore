@@ -1,5 +1,6 @@
 # .terraform directories
 **/.terraform/*
+.terraform.lock.hcl
 
 # tfstate files
 *.tfstate
@@ -7,3 +8,6 @@
 
 # tfvars files
 *.tfvars
+
+.DS_Store
+.vscode/
