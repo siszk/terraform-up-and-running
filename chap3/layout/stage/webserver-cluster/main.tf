@@ -13,9 +13,9 @@ resource "aws_launch_configuration" "example" {
   nohup busybox httpd -f -p ${var.server_port} &
   EOF
 
-  # lifecycle {
-  #   create_before_destroy = true
-  # }
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
 resource "aws_autoscaling_group" "example" {
@@ -118,17 +118,6 @@ resource "aws_security_group" "alb" {
     protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
   }
-}
-
-variable "server_port" {
-  description = "The Port the server will use for HTTP requests"
-  type        = number
-  default     = 8080
-}
-
-output "alb_dns_name" {
-  value       = aws_lb.example.dns_name
-  description = "The domain name of the load balancer"
 }
 
 data "aws_vpc" "default" {
