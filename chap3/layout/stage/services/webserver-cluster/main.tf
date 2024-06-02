@@ -2,6 +2,12 @@ provider "aws" {
   region = "ap-northeast-1"
 }
 
+terraform {
+  backend "s3" {
+    key = "stage/services/webserver-cluster/terraform.tfstate"
+  }
+}
+
 resource "aws_launch_configuration" "example" {
   image_id        = "ami-01bef798938b7644d"
   instance_type   = "t2.micro"
