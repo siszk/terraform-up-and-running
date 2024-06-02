@@ -3,16 +3,21 @@ provider "aws" {
 }
 
 terraform {
-  backend "s3" {
-    key = "global/s3/terraform.tfstate"
-  }
+  # backend "s3" {
+  #   bucket = "terraform-up-and-running-2024060202-state"
+  #   key    = "global/s3/terraform.tfstate"
+  #   region = "ap-northeast-1"
+  #   # dynamodb_table = "terraform-up-and-running-locks"
+  #   encrypt = true
+
+  # }
 }
 
 resource "aws_s3_bucket" "terraform_state" {
   bucket = "terraform-up-and-running-2024060202-state"
 
   lifecycle {
-    prevent_destroy = true
+    prevent_destroy = false
   }
 }
 
