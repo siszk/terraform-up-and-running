@@ -17,4 +17,5 @@ module "webservers-prod" {
     Owner      = "team-foo"
     DeployedBy = "terraform"
   }
+  enable_autoscaling = 0
 }

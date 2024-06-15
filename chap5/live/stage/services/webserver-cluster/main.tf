@@ -17,4 +17,5 @@ module "webserver-cluster" {
     Owner      = "team-foo"
     DeployedBy = "terraform"
   }
+  enable_autoscaling = false
 }
