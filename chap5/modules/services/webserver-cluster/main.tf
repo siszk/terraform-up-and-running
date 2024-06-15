@@ -113,7 +113,7 @@ resource "aws_security_group" "instance" {
 
 resource "aws_security_group_rule" "allow_all_inbound" {
   type              = "ingress"
-  security_group_id = aws_security_group.instance
+  security_group_id = aws_security_group.instance.id
 
   from_port   = var.server_port
   to_port     = var.server_port
@@ -127,7 +127,7 @@ resource "aws_security_group" "alb" {
 
 resource "aws_security_group_rule" "allow_httpd_inbound" {
   type              = "ingress"
-  security_group_id = aws_security_group.alb
+  security_group_id = aws_security_group.alb.id
 
   from_port   = local.http_port
   to_port     = local.http_port
@@ -137,7 +137,7 @@ resource "aws_security_group_rule" "allow_httpd_inbound" {
 
 resource "aws_security_group_rule" "allow_all_outbound" {
   type              = "egress"
-  security_group_id = aws_security_group.alb
+  security_group_id = aws_security_group.alb.id
 
   from_port   = local.any_port
   to_port     = local.any_port
